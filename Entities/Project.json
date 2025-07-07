@@ -1,0 +1,127 @@
+{
+  "name": "Project",
+  "type": "object",
+  "properties": {
+    "companyName": {
+      "type": "string"
+    },
+    "position": {
+      "type": "string"
+    },
+    "jobDescription": {
+      "type": "string"
+    },
+    "companyWebsite": {
+      "type": "string"
+    },
+    "industry": {
+      "type": "string"
+    },
+    "linkedinProfileUrl": {
+      "type": "string"
+    },
+    "linkedInJobUrl": {
+      "type": "string"
+    },
+    "resumeUrl": {
+      "type": "string"
+    },
+    "resumeText": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planning",
+        "in_progress",
+        "submitted",
+        "interviewing",
+        "offer_received",
+        "closed"
+      ],
+      "default": "planning"
+    },
+    "fitReport": {
+      "type": "object",
+      "properties": {
+        "overallFit": {
+          "type": "number"
+        },
+        "skills": {
+          "type": "number"
+        },
+        "experience": {
+          "type": "number"
+        },
+        "education": {
+          "type": "number"
+        },
+        "goals": {
+          "type": "number"
+        },
+        "strengths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "weaknesses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "strategicPlan": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        },
+        "chart": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "name",
+                  "value"
+                ]
+              }
+            }
+          },
+          "required": [
+            "title",
+            "data"
+          ]
+        }
+      }
+    }
+  },
+  "required": [
+    "companyName",
+    "position"
+  ],
+  "rls": {
+    "read": {
+      "created_by": "{{user.email}}"
+    },
+    "write": {
+      "created_by": "{{user.email}}"
+    }
+  }
+}
